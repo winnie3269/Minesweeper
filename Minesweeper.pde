@@ -150,6 +150,40 @@ public class MSButton
     } else if (countBombs(r, c)>0)
     {
       label=""+ (countBombs(r, c));
+    } else 
+    {
+      if (isValid(r, c-1)==true && buttons[r][c+1].isClicked()==false)
+      {
+        buttons[r][c-1].mousePressed();
+      }
+      if (isValid(r, c+1)==true && buttons[r][c-1].isClicked()==false)
+      {
+        buttons[r][c+1].mousePressed();
+      }
+      if (isValid(r-1,c)==true && buttons[r+1][c].isClicked()==false)
+      {
+        buttons[r-1][c].mousePressed();
+      }
+      if (isValid(r+1,c)==true && buttons[r-1][c].isClicked()==false)
+      {
+        buttons[r+1][c].mousePressed();
+      }
+      if (isValid(r-1,c+1)==true && buttons[r+1][c-1].isClicked()==false)
+      {
+        buttons[r-1][c+1].mousePressed();
+      }
+      if (isValid(r+1,c+1)==true && buttons[r-1][c-1].isClicked()==false)
+      {
+        buttons[r+1][c+1].mousePressed();
+      }
+      if (isValid(r-1,c-1)==true && buttons[r+1][r+1].isClicked()==false)
+      {
+        buttons[r-1][c-1].mousePressed();
+      }
+      if (isValid(r+1,c-1)==true && buttons[r-1][c+1].isClicked()==false)
+      {
+        buttons[r+1][c-1].mousePressed();
+      }
     }//your code here
   }
   public void draw () 
