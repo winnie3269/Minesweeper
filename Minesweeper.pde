@@ -118,7 +118,7 @@ public class MSButton
   private String label;
   public MSButton ( int rr, int cc )
   {
-    width = 400/NUM_COLS;
+    width = 400/NUM_COLS;i
     height = 400/NUM_ROWS;
     r = rr;
     c = cc; 
@@ -152,35 +152,35 @@ public class MSButton
       label=""+ (countBombs(r, c));
     } else 
     {
-      if (isValid(r, c-1)==true && buttons[r][c+1].isClicked()==false)
+      if (isValid(r, c-1)==true && buttons[r][c-1].isClicked()==false)
       {
         buttons[r][c-1].mousePressed();
       }
-      if (isValid(r, c+1)==true && buttons[r][c-1].isClicked()==false)
+      if (isValid(r, c+1)==true && buttons[r][c+1].isClicked()==false)
       {
         buttons[r][c+1].mousePressed();
       }
-      if (isValid(r-1,c)==true && buttons[r+1][c].isClicked()==false)
+      if (isValid(r-1,c)==true && buttons[r-1][c].isClicked()==false)
       {
         buttons[r-1][c].mousePressed();
       }
-      if (isValid(r+1,c)==true && buttons[r-1][c].isClicked()==false)
+      if (isValid(r+1,c)==true && buttons[r+1][c].isClicked()==false)
       {
         buttons[r+1][c].mousePressed();
       }
-      if (isValid(r-1,c+1)==true && buttons[r+1][c-1].isClicked()==false)
+      if (isValid(r-1,c+1)==true && buttons[r-1][c+1].isClicked()==false)
       {
         buttons[r-1][c+1].mousePressed();
       }
-      if (isValid(r+1,c+1)==true && buttons[r-1][c-1].isClicked()==false)
+      if (isValid(r+1,c+1)==true && buttons[r+1][c+1].isClicked()==false)
       {
         buttons[r+1][c+1].mousePressed();
       }
-      if (isValid(r-1,c-1)==true && buttons[r+1][r+1].isClicked()==false)
+      if (isValid(r-1,c-1)==true && buttons[r-1][c-1].isClicked()==false)
       {
         buttons[r-1][c-1].mousePressed();
       }
-      if (isValid(r+1,c-1)==true && buttons[r-1][c+1].isClicked()==false)
+      if (isValid(r+1,c-1)==true && buttons[r+1][c-1].isClicked()==false)
       {
         buttons[r+1][c-1].mousePressed();
       }
@@ -207,7 +207,7 @@ public class MSButton
   }
   public boolean isValid(int r, int c)
   {
-    if (r>-1 && r<20 && c>-1 && c<20)
+    if (r=>0 && r<=20 && c=>0 && c<=20)
     {
       return true;
     }
