@@ -3,7 +3,6 @@ int NUM_ROWS=20;
 int NUM_COLS=20;//Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs;//ArrayList of just the minesweeper buttons that are mined
-public int numBombs=5;
 public boolean gameOver=false;
 void setup ()//see slide 57
 {
@@ -21,14 +20,11 @@ void setup ()//see slide 57
       buttons[rows][col]=new MSButton(rows, col);
     }
   }
-  for (int i=0; i<numBombs; i++)
-  {
     setBombs();
-  }
 } 
 public void setBombs()
 {
-  for (int i=0; i<numBombs; i++)
+  for (int i=0; i<7; i++)
   {
     int r= (int)(Math.random()*NUM_ROWS);
     int c= (int)(Math.random()*NUM_COLS);
@@ -42,38 +38,35 @@ public void draw ()
 {
   background( 0 );
   if (isWon())
+  {
     displayWinningMessage();
+  }
 }
 public boolean isWon()
 {
-  int count=0;
-  for (int i=0; i<NUM_ROWS; i++)
+  for (int r=0; r<NUM_ROWS; r++)
   {
-    for (int x=0; x<NUM_COLS; x++)
+    for (int c=0; c<NUM_COLS; c++)
     {
-      if (bombs.contains(buttons[x][i]) && buttons[x][i].isMarked())
+      if (!bombs.contains(buttons[r][c]) && !buttons[r][c].isMarked())
       {
-        count++;
+        return false;
       }
     }
   }
-  if (count==numBombs)
-  {
-    return true;
-  }
-  return false;
+  return true;
 }
 public void displayLosingMessage()
 {
   gameOver=true;
-  for (int i=0; i<NUM_ROWS; i++)
+  for (int r=0; r<NUM_ROWS; r++)
   {
-    for (int x=0; x<NUM_COLS; x++)
+    for (int c=0; c<NUM_COLS; c++)
     {
-      if (bombs.contains(buttons[i][x]))
+      if (bombs.contains(buttons[r][c]))
       {
-        buttons[i][x].clicked=true;
-        buttons[i][x].draw();
+        buttons[r][c].clicked=true;
+        buttons[r][c].draw();
       }
     }
   }
@@ -187,7 +180,7 @@ public class MSButton
       {
         buttons[r+1][c-1].mousePressed();
       }
-    }//your code here
+    }
   }
   public void draw () 
   {    
